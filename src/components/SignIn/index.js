@@ -5,14 +5,18 @@ import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
+import { LandingLink } from '../Landing';
+/* 
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faFacebookF } from '@fortawesome/fontawesome-free-brands' */
 
 const SignInPage = ({ history }) =>
-  <div>
-    <h1>SignIn</h1>
-    <SignInForm history={history} />
-    <PasswordForgetLink />
-    <SignUpLink />
-  </div>
+    <section>
+          <LandingLink />
+          <h1>Ecran de connexion</h1>
+          <SignUpLink />
+          <SignInForm history={history} />
+    </section>
 
 const updateByPropertyName = (propertyName, value) => () => ({
   [propertyName]: value,
@@ -65,21 +69,30 @@ class SignInForm extends Component {
       email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} autoComplete="on">
+        <label htmlFor="email">Identifiant</label>
         <input
           value={email}
           onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
           type="text"
-          placeholder="Email Address"
+          id="email"
+          placeholder="Adresse-Mail"
+          autoComplete="on"
         />
+        <label htmlFor="password">Mot de passe</label>
         <input
           value={password}
           onChange={event => this.setState(updateByPropertyName('password', event.target.value))}
           type="password"
-          placeholder="Password"
+          id="password"
+          placeholder="**********"
+          autoComplete="on"
         />
+
+        <PasswordForgetLink></PasswordForgetLink>
+
         <button disabled={isInvalid} type="submit">
-          Sign In
+          Rejoindre
         </button>
 
         { error && <p>{error.message}</p> }

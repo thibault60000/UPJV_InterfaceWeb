@@ -45,21 +45,27 @@ class PasswordChangeForm extends Component {
       passwordOne === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} autoComplete="on">
+        <label forhtml="passwordOne">Entrez le nouveau mot de passe</label>
         <input
           value={passwordOne}
+          id="passwordOne"
           onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
           type="password"
-          placeholder="New Password"
+          placeholder="Mot de passe"
+          autoComplete="on"
         />
+        <label forhtml="passwordTwo">Confirmez le mot de passe</label>
         <input
           value={passwordTwo}
+          id="passwordTwo"
           onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
           type="password"
-          placeholder="Confirm New Password"
+          placeholder="Confirmez"
+          autoComplete="on"
         />
         <button disabled={isInvalid} type="submit">
-          Reset My Password
+          Changer
         </button>
 
         { error && <p>{error.message}</p> }

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { store, history } from './store/index';
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
-import "./assets/index.css";
+import "./assets//css/style.css";
 
 import registerServiceWorker from "./registerServiceWorker";
 import withAuthentication from './components/Session/withAuthentication';

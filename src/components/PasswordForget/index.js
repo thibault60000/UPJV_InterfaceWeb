@@ -6,7 +6,7 @@ import * as routes from '../../constants/routes';
 
 const PasswordForgetPage = () =>
   <div>
-    <h1>PasswordForget</h1>
+    <h1>Mot de passe oublié ?</h1>
     <PasswordForgetForm />
   </div>
 
@@ -49,15 +49,18 @@ class PasswordForgetForm extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} autoComplete="on">
+        <label forhtml="emailForget">Adresse mail</label>
         <input
+          id="emailForget"
           value={this.state.email}
           onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
           type="text"
-          placeholder="Email Address"
+          placeholder="Mail"
+          autoComplete="on"
         />
         <button disabled={isInvalid} type="submit">
-          Reset My Password
+          Récupérer mon mot de passe
         </button>
 
         { error && <p>{error.message}</p> }
@@ -66,10 +69,7 @@ class PasswordForgetForm extends Component {
   }
 }
 
-const PasswordForgetLink = () =>
-  <p>
-    <Link to={routes.PASSWORD_FORGET}>Forgot Password?</Link>
-  </p>
+const PasswordForgetLink = () => <Link to={routes.PASSWORD_FORGET}>Mot de pass oublié ?</Link>
 
 export default PasswordForgetPage;
 

@@ -6,26 +6,26 @@ import SignOutButton from '../SignOut';
 import * as routes from '../../constants/routes';
 
 const Navigation = ({ authUser }) =>
-  <div>
+  <nav className="navbar">
     { authUser
         ? <NavigationAuth />
         : <NavigationNonAuth />
     }
-  </div>
+  </nav>
 
 const NavigationAuth = () =>
   <ul>
-    <li><Link to={routes.LANDING}>Landing</Link></li>
-    <li><Link to={routes.HOME}>Home</Link></li>
-    <li><Link to={routes.ACCOUNT}>Account</Link></li>
-    <li><Link to={routes.ARTICLE}>Articles</Link></li>
+    <li><Link to={routes.LANDING}>Accueil</Link></li>
+    <li><Link to={routes.HOME}>Ma Page D'accueil</Link></li>
+    <li><Link to={routes.ACCOUNT}>Mon Compte</Link></li>
+    <li><Link to={routes.ARTICLE}>Mes articles</Link></li>
     <li><SignOutButton /></li>
   </ul>
 
 const NavigationNonAuth = () =>
   <ul>
-    <li><Link to={routes.LANDING}>Landing</Link></li>
-    <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
+    <li><Link to={routes.LANDING}>Accueil</Link></li>
+    <li><Link to={routes.SIGN_IN}>Se Connecter </Link></li>
   </ul>
 
 const mapStateToProps = (state) => ({

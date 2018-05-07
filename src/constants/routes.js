@@ -5,3 +5,5 @@ export const PASSWORD_FORGET = '/pw-forget';
 export const HOME = '/home';
 export const ACCOUNT = '/account';
 export const ARTICLE = '/article';
+export const GROUP = '/group';
+export const ONE_ARTICLE = '/article/:id';

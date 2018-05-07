@@ -20,9 +20,11 @@ class HomePage extends Component {
     return (
       <div>
         <Navigation />
-        <h1>Home</h1>
-        <p>The Home Page is accessible by every signed in user.</p>
-
+        <hr />
+        <h1>Page d'Accueil</h1>
+        <hr />
+        <p>Cette page est accessible seulement pour un utilisateur authentifié</p>
+        <hr />
         { !!users && <UserList users={users} /> }
       </div>
     );
@@ -33,10 +35,13 @@ const UserList = ({ users }) =>
   <div>
     <h2>Liste des utilisateurs : </h2>
 
-
-    {Object.keys(users).map(key =>
-      <div key={key}>{users[key].username}</div>
+    <ul>  
+    {Object.keys(users).map(key => 
+      <li key={key}>
+        {users[key].username}
+      </li>
     )}
+    </ul>
   </div>
 
 const mapStateToProps = (state) => ({

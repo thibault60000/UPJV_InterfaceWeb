@@ -5,10 +5,16 @@ import { compose } from 'recompose';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
 import withAuthorization from '../Session/withAuthorization';
+import Navigation from '../Navigation';
 
 const AccountPage = ({ authUser }) =>
   <div>
-    <h1>Account: {authUser.email}</h1>
+    <Navigation />
+      <hr />
+    <h1>Mon Compte:</h1>
+    <ul>
+      <li>E-mail : {authUser.email}</li>
+    </ul>
     <PasswordForgetForm />
     <PasswordChangeForm />
   </div>

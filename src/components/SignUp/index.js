@@ -9,7 +9,7 @@ import * as routes from '../../constants/routes';
 
 const SignUpPage = ({ history }) =>
   <div>
-    <h1>SignUp</h1>
+    <h1>Ecran d'inscription</h1>
     <SignUpForm history={history} />
   </div>
 
@@ -86,30 +86,39 @@ class SignUpForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
+        <label forHtml="username">Nom d'utilisateur</label>
         <input
           value={username}
+          id="username"
           onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
           type="text"
-          placeholder="Full Name"
+          placeholder="Identifiant"
         />
+        <label forHtml="email">Adresse Mail</label>
         <input
           value={email}
+          id="email"
           onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
           type="text"
-          placeholder="Email Address"
+          placeholder="Mail"
         />
+        <label forHtml="passwordOne">Mot de passe</label>
         <input
           value={passwordOne}
+          id="paswwordOne"
           onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
           type="password"
-          placeholder="Password"
+          placeholder="********"
         />
+        <label forHtml="passwordTwo">Confirmez mot de passe</label>
         <input
           value={passwordTwo}
+          id="passwordTwo"
           onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
           type="password"
-          placeholder="Confirm Password"
+          placeholder="*********"
         />
+        <label forHrml="Statut">Statut</label>
         <select value={statut} id="Statut" name="Statut" onChange={event => this.setState(updateByPropertyName('statut', event.target.value))}>     
           <option value="">Choisissez</option>
           <option value="Collègue">Collège</option>
@@ -122,7 +131,7 @@ class SignUpForm extends Component {
         </select>
 
         <button disabled={isInvalid} type="submit">
-          Sign Up
+          S'inscrire
         </button>
 
         { error && <p>{error.message}</p> }
@@ -131,12 +140,8 @@ class SignUpForm extends Component {
   }
 }
 
-const SignUpLink = () =>
-  <p>
-    Don't have an account?
-    {' '}
-    <Link to={routes.SIGN_UP}>Sign Up</Link>
-  </p>
+const SignUpLink = () => <Link to={routes.SIGN_UP} className="otherRoute" >S'inscrire</Link>
+  
 
 export default withRouter(SignUpPage);
 
