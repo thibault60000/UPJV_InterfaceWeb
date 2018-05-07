@@ -16,30 +16,31 @@ const Navigation = ({ authUser }) =>
 
 const NavigationAuth = () =>
   <Navbar brand='logo' right>
-    <NavItem>
-      <Link to={routes.LANDING}>Accueil</Link>
+    <NavItem href={routes.LANDING} >
+      Bienvenue
     </NavItem>
-    <NavItem>
-      <Link to={routes.HOME}>Ma Page D'accueil</Link>
+    <NavItem href={routes.HOME}>
+      Accueil
     </NavItem>
-    <NavItem>
-      <Link to={routes.ACCOUNT}>Mon Compte</Link>
+    <NavItem href={routes.ACCOUNT}>
+      Mon Compte
     </NavItem>
-    <NavItem>
-      <Link to={routes.ARTICLE}>Mes articles</Link>
+
+    <NavItem href={routes.ARTICLE}>
+      Les articles
     </NavItem>
-    <NavItem>
+   
       <SignOutButton />
-    </NavItem>
+    
   </Navbar>
 
 const NavigationNonAuth = () =>
     <Navbar brand='logo' right>
-    <NavItem>
-      <Link to={routes.LANDING}>Accueil</Link>
+    <NavItem href={routes.LANDING} >
+      Bienvenue
     </NavItem>
-    <NavItem>
-      <Link to={routes.SIGN_IN}>Se Connecter </Link>
+    <NavItem href={routes.SIGN_IN}>
+      Se Connecter
     </NavItem>
   </Navbar>
 
