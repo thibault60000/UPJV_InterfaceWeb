@@ -30,7 +30,7 @@ const NavigationAuth = () =>
       Les articles
     </NavItem>
    
-      <SignOutButton />
+    <SignOutButton />
     
   </Navbar>
 

@@ -134,7 +134,7 @@ class OneArticleEditForm extends Component {
               />
 
               <Button waves="light" disabled={isInvalid} type="submit">
-                Créer
+                Modifier
               </Button>
 
               {error && <p>{error.message}</p>}

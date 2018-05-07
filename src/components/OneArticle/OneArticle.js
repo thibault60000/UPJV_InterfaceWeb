@@ -53,7 +53,7 @@ class OneArticle extends Component{
                 {
                   users.hasOwnProperty(articles.user) && <p> <strong>Idée de : par : </strong> { users[articles.user].username } </p>                   
                 }              
-                { authUser.uid === articles.user && <p><Button class="btn waves-effect waves-light" waves="light" onClick={ () => { this.handleClick(articles.id) } }> Supprimer l'idée</Button></p> }
+                { authUser.uid === articles.user && <p><Button className="btn waves-effect waves-light" waves="light" onClick={ () => { this.handleClick(articles.id) } }> Supprimer l'idée</Button></p> }
             
               </Card>
               { authUser.uid === articles.user && <OneArticleEditForm articles={articles} history={history} authUser={ users[articles.user].username } /> }
