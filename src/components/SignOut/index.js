@@ -1,13 +1,12 @@
 import React from 'react';
-
+import {Button} from 'react-materialize'
 import { auth } from '../../firebase';
 
 const SignOutButton = () =>
-  <button
-    type="button"
+  <Button waves='light'
     onClick={auth.doSignOut}
   >
     Se déconnecter
-  </button>
+  </Button>
 
 export default SignOutButton;

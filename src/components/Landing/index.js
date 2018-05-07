@@ -8,8 +8,8 @@ import * as routes from '../../constants/routes';
 const LandingPage = () =>
     <section>
         <Navigation />  
-        <hr />
         <h1> Bienvenue ! </h1>
+        <p> Ceci est la page "LANDING" (dispo pour les utilisateurs non authentifiés et authentifiés)</p>
     </section>
 
 const LandingLink = () => <Link to={routes.LANDING} >  <FontAwesomeIcon icon={faAngleLeft} /> Accueil </Link>

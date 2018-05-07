@@ -33,7 +33,6 @@ class ArticlePage extends Component {
     return (
       <div>
         <Navigation />
-        <hr />
         <h1>Article</h1>
         <ArticleCreateForm
           authUser={this.props.authUser}

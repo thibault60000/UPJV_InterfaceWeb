@@ -1,35 +1,14 @@
-@import '../fonts/fonts.css';
-@import './variables.css';
-@import './reset.css';
 @import './scrollbar.css';
-@import './hover.css';
 
-hr{
-	display: block;
-	margin: 1rem 0;
-}
 
-/* ARTICLES LIST */
-.articlesList{
-	display: block;
+.card .card-image img {
+    display: block;
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: auto !important;
+	max-width: 22vh !important;
 }
-	.articlesList li,
-	.oneArticle{
-		display: block;
-		padding: 0.5rem 1rem;
-		border: 2px dashed lightcoral;
-		width: 60%;
-		margin: 0.5rem 0 0.5rem 1rem;
-	}
-		.articlesList li > span,
-		.oneArticle > span{
-			display:block;
-			margin-bottom: 0.2rem;
-		}
-		.articlesList li > span > button,
-		.oneArticle > span > button{
-			padding: 0.4rem 1rem;
-			background-color: lightcoral;
-			color: white;
-			margin: 0.3rem 0;
-		}

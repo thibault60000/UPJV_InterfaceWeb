@@ -3,10 +3,11 @@ import React, { Component } from "react";
 // Firebase
 import { db } from "../../firebase";
 import firebase from "firebase";
-import FileUploader from "react-firebase-file-uploader";
 
 // Routes
 import * as routes from "../../constants/routes";
+
+import { Input, Row, Col, Button } from "react-materialize";
 
 const updateByPropertyName = (propertyName, value) => () => ({
   [propertyName]: value
@@ -21,7 +22,10 @@ const INITIAL_STATE = {
   comments: {},
   likes: null,
   error: null,
-  user: ""
+  user: "",
+  isPublic: true,
+  keywords: null,
+  limite: 50
 };
 
 class ArticleCreateForm extends Component {
@@ -31,29 +35,19 @@ class ArticleCreateForm extends Component {
       ...INITIAL_STATE,
       avatar: "",
       isUploading: "",
-      progress: 0,
-      avatarUrl: ""
+      progress: 0
     };
   }
 
-  handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
-  handleProgress = progress => this.setState({ progress });
-  handleUploadError = error => {
-    this.setState({ isUploading: false });
-    console.error(error);
-  };
-  handleUploadSuccess = filename => {
-    this.setState({ avatar: filename, progress: 100, isUploading: false });
-    firebase
-      .storage()
-      .ref("images/articles")
-      .child(filename)
-      .getDownloadURL()
-      .then(url => this.setState({ avatarURL: url }));
-  };
-
   onSubmit = event => {
-    const { title, description, avatar } = this.state;
+    const {
+      title,
+      description,
+      avatar,
+      isPublic,
+      keywords,
+      limite
+    } = this.state;
     const { history, authUser } = this.props;
     const id = authUser.uid + Date.now();
     const date = Date.now();
@@ -72,15 +66,14 @@ class ArticleCreateForm extends Component {
         comments,
         likes,
         username,
+        isPublic,
+        keywords,
+        limite,
         avatar
       )
       .then(() => {
         this.setState(() => ({
-          ...INITIAL_STATE,
-          avatar: "",
-          isUploading: "",
-          progress: 0,
-          avatarUrl: ""
+          ...INITIAL_STATE
         }));
         history.push(routes.ARTICLE);
       })
@@ -92,63 +85,98 @@ class ArticleCreateForm extends Component {
   };
 
   render() {
-    const { title, description, error } = this.state;
-    const isInvalid =
-      title === "" || description === "" || this.state.progress !== 100;
+    const {
+      title,
+      description,
+      error,
+      isPublic,
+      keywords,
+      limite
+    } = this.state;
+    const isInvalid = title === "" || description === "" || keywords === "";
 
     return (
+      <div className="container">
       <form onSubmit={this.onSubmit}>
-        <p>
-          <label>
-            {this.state.isUploading && (
-              <span> Progression: {this.state.progress} </span>
-            )}
-            {this.state.avatarURL && <img src={this.state.avatarURL} />}
-            Avatar Img
-            <FileUploader
-              accept="image/*"
-              name="avatar"
-              randomizeFilename
-              storageRef={firebase.storage().ref("images/articles")}
-              onUploadStart={this.handleUploadStart}
-              onUploadError={this.handleUploadError}
-              onUploadSuccess={this.handleUploadSuccess}
-              onProgress={this.handleProgress}
+        <fieldset>
+          <Row>
+            <Input
+              type="text"
+              value={title}
+              s={12}
+              label="Titre de l'article"
+              onChange={event =>
+                this.setState(updateByPropertyName("title", event.target.value))
+              }
             />
-          </label>
-        </p>
-        <p>
-          <label forhtml="titleArticle">Titre de l'article</label>
-          <input
-            value={title}
-            id="titleARticle"
-            onChange={event =>
-              this.setState(updateByPropertyName("title", event.target.value))
-            }
-            type="text"
-            placeholder="Titre"
-          />
-        </p>
-        <p>
-          <label forhtml="descArticle">Titre de l'article</label>
-          <textarea
-            id="descArticle"
-            value={description}
-            onChange={event =>
-              this.setState(
-                updateByPropertyName("description", event.target.value)
-              )
-            }
-            placeholder="Description"
-          />
-        </p>
+            <Input
+              type="textarea"
+              value={description}
+              s={12}
+              label="Description de l'article"
+              onChange={event =>
+                this.setState(
+                  updateByPropertyName("description", event.target.value)
+                )
+              }
+            />
+            <Col s={12}>
+              <label forhtml="rangeArticle">Nombre maximum de personnes</label>
+              <input
+                type="range"
+                min="5"
+                max="100"
+                step="5"
+                id="rangeArticle"
+                value={limite}
+                onChange={event =>
+                  this.setState(
+                    updateByPropertyName("limite", event.target.value)
+                  )
+                }
+              />
+              <output
+                forhtml="rangeArticle"
+                value={limite}
+                name="rangeArticleOutput"
+              >
+                {limite}
+              </output>
+            </Col>
+            <Input
+              type="textarea"
+              value={keywords}
+              s={12}
+              label="Mots clés (séparés par des virgules)"
+              onChange={event =>
+                this.setState(
+                  updateByPropertyName("keywords", event.target.value)
+                )
+              }
+            />
+            
+            <Input
+              s={12}
+              name="checkboxIsPublic"
+              type="checkbox"
+              value={isPublic}
+              label="Publique ?"
+              onChange={event =>
+                this.setState(
+                  updateByPropertyName("isPublic", event.target.value)
+                )
+              }
+            />
 
-        <button disabled={isInvalid} type="submit">
-          Créer
-        </button>
+            <Button waves="light" disabled={isInvalid} type="submit">
+              Créer
+            </Button>
 
-        {error && <p>{error.message}</p>}
+            {error && <p>{error.message}</p>}
+          </Row>
+        </fieldset>
       </form>
+    </div>
     );
   }
 }

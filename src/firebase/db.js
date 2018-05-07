@@ -18,7 +18,7 @@ export const onceGetUsers = () =>
 export const onceGetArticles = () => 
   db.ref('articles').once('value');
 
-export const doCreateArticle = (user, id, title, date, description, comments, likes, username, urlImg) => 
+export const doCreateArticle = (user, id, title, date, description, comments, likes, username, isPublic, keywords, limite, urlImg) => 
   db.ref(`articles/${id}`).set({
     user,
     id,
@@ -28,6 +28,9 @@ export const doCreateArticle = (user, id, title, date, description, comments, li
     comments,
     likes,
     username, 
+    isPublic,
+    keywords,
+    limite,
     urlImg
   });
 
@@ -38,9 +41,12 @@ export const removeArticle = (id) => {
   db.ref('articles').child(id).remove();
 }
 
-export const updateArticle = (id, title, description, editDate) => 
+export const updateArticle = (id, title, description, editDate, keywords, limite, isPublic) => 
   db.ref(`articles/${id}`).update({
     title,
     description,
-    editDate
+    editDate,
+    keywords,
+    limite,
+    isPublic
   })

@@ -12,6 +12,7 @@ import 'moment/locale/fr';
 
 import OneArticleEditForm from './OneArticleEditForm';
 
+import { Card, CardTitle, Button, Col, Row } from "react-materialize";
 
 /* Liste d'articles */
 class OneArticle extends Component{
@@ -24,8 +25,6 @@ class OneArticle extends Component{
       history.push(routes.ARTICLE);
     }
 
-
-  
     componentDidMount() {
       const { onSetUsers, } = this.props;
       /* Users */
@@ -39,39 +38,26 @@ class OneArticle extends Component{
 
       const { users } = this.props;
 
-      // Image URL
-      articles.urlImg && (
-        st.doGetArticlesImg(articles.urlImg).then((url) => {
-          var test = url;
-          document.getElementById("imgOneArticle").src = test;
-        }).catch((error) => {
-           console.log(error);
-        })
-      )
         return (
-          <div className="oneArticle">
-              <img id="imgOneArticle" alt="Illustration article" />
-              <span> Titre : { articles.title }</span>
-              <span> Description :{articles.description } </span>
-              {
-                articles.editDate && <span> Edité le { moment(articles.editDate).format('Do MMMM YYYY') } </span>
-              }
-              {
-                !articles.editDate && <span> Créé le { moment(articles.date).format('Do MMMM YYYY') } </span>
-              }
-              <span> ID :  {articles.id } </span>
-              <span> {articles.likes } j'aime </span>
-              {
-                users.hasOwnProperty(articles.user) && <span> Créé par : { users[articles.user].username } </span>                   
-              }              
-              { authUser.uid === articles.user && <span><button onClick={ () => { this.handleClick(articles.id) } }> Supprimer l'article</button></span> }
-              <hr />
+
+          <Col m={6} s={12}>
+              <Card className='blue-grey darken-1' textClassName='white-text' title='Card title' >
+                <p> <strong>Titre : </strong> { articles.title }</p>
+                <p> <strong> Description : </strong>{articles.description } </p>
+                {
+                  articles.editDate && <p> <strong> Edité le : </strong> { moment(articles.editDate).format('Do MMMM YYYY') } </p>
+                }
+                {
+                  !articles.editDate && <p> <strong> Créé le : </strong> { moment(articles.date).format('Do MMMM YYYY') } </p>
+                }
+                {
+                  users.hasOwnProperty(articles.user) && <p> <strong>Idée de : par : </strong> { users[articles.user].username } </p>                   
+                }              
+                { authUser.uid === articles.user && <p><Button class="btn waves-effect waves-light" waves="light" onClick={ () => { this.handleClick(articles.id) } }> Supprimer l'idée</Button></p> }
+            
+              </Card>
               { authUser.uid === articles.user && <OneArticleEditForm articles={articles} history={history} authUser={ users[articles.user].username } /> }
-              { authUser.uid !== articles.user && <p> Créé par { articles.user } </p> }
-              {
-                
-              }
-          </div>
+          </Col>
       )
     }
   } 

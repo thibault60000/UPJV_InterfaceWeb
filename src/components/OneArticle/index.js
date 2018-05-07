@@ -33,9 +33,7 @@ class OneArticlePage extends Component {
     return (
       <div>
         <Navigation />
-        <hr />
         <h1> Voici l'article : { articles.title } </h1>
-        <hr />
         {!!articles && <OneArticle articles={articles} authUser={this.props.authUser} history={this.state.history} />}
         {!articles && <p>Cet article n'existe plus.</p>}
       </div>

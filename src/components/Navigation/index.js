@@ -4,29 +4,44 @@ import { connect } from 'react-redux';
 
 import SignOutButton from '../SignOut';
 import * as routes from '../../constants/routes';
+import {Navbar, NavItem} from 'react-materialize'
 
 const Navigation = ({ authUser }) =>
-  <nav className="navbar">
+  <div>
     { authUser
         ? <NavigationAuth />
         : <NavigationNonAuth />
     }
-  </nav>
+  </div>
 
 const NavigationAuth = () =>
-  <ul>
-    <li><Link to={routes.LANDING}>Accueil</Link></li>
-    <li><Link to={routes.HOME}>Ma Page D'accueil</Link></li>
-    <li><Link to={routes.ACCOUNT}>Mon Compte</Link></li>
-    <li><Link to={routes.ARTICLE}>Mes articles</Link></li>
-    <li><SignOutButton /></li>
-  </ul>
+  <Navbar brand='logo' right>
+    <NavItem>
+      <Link to={routes.LANDING}>Accueil</Link>
+    </NavItem>
+    <NavItem>
+      <Link to={routes.HOME}>Ma Page D'accueil</Link>
+    </NavItem>
+    <NavItem>
+      <Link to={routes.ACCOUNT}>Mon Compte</Link>
+    </NavItem>
+    <NavItem>
+      <Link to={routes.ARTICLE}>Mes articles</Link>
+    </NavItem>
+    <NavItem>
+      <SignOutButton />
+    </NavItem>
+  </Navbar>
 
 const NavigationNonAuth = () =>
-  <ul>
-    <li><Link to={routes.LANDING}>Accueil</Link></li>
-    <li><Link to={routes.SIGN_IN}>Se Connecter </Link></li>
-  </ul>
+    <Navbar brand='logo' right>
+    <NavItem>
+      <Link to={routes.LANDING}>Accueil</Link>
+    </NavItem>
+    <NavItem>
+      <Link to={routes.SIGN_IN}>Se Connecter </Link>
+    </NavItem>
+  </Navbar>
 
 const mapStateToProps = (state) => ({
   authUser: state.sessionState.authUser,

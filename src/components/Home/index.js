@@ -4,7 +4,7 @@ import { compose } from 'recompose';
 import Navigation from '../Navigation';
 import withAuthorization from '../Session/withAuthorization';
 import { db } from '../../firebase';
-
+import {Collection, CollectionItem} from 'react-materialize'
 class HomePage extends Component {
   componentDidMount() {
     const { onSetUsers } = this.props;
@@ -20,11 +20,8 @@ class HomePage extends Component {
     return (
       <div>
         <Navigation />
-        <hr />
         <h1>Page d'Accueil</h1>
-        <hr />
         <p>Cette page est accessible seulement pour un utilisateur authentifié</p>
-        <hr />
         { !!users && <UserList users={users} /> }
       </div>
     );
@@ -33,15 +30,13 @@ class HomePage extends Component {
 
 const UserList = ({ users }) =>
   <div>
-    <h2>Liste des utilisateurs : </h2>
+    <p>Remerciements pour les nouveaux membres : </p>
 
-    <ul>  
-    {Object.keys(users).map(key => 
-      <li key={key}>
-        {users[key].username}
-      </li>
-    )}
-    </ul>
+    <Collection>
+      {Object.keys(users).map(key => 
+        <CollectionItem key={key}>{users[key].username}</CollectionItem>
+      )}
+    </Collection>
   </div>
 
 const mapStateToProps = (state) => ({
