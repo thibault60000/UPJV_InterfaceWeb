@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {Row, Input, Button} from 'react-materialize'
 
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
@@ -50,20 +51,35 @@ class PasswordForgetForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit} autoComplete="on">
-        <label forhtml="emailForget">Adresse mail</label>
-        <input
-          id="emailForget"
-          value={this.state.email}
-          onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
-          type="text"
-          placeholder="Mail"
-          autoComplete="on"
-        />
-        <button disabled={isInvalid} type="submit">
-          Récupérer mon mot de passe
-        </button>
+        <Row>
+          <h3 className="h3-title">Récupérer mon mot de passe</h3>
+          <hr className="separator"/>
+        </Row>
+        { error && <p s={12} m={12} l={12} className="error">{error.message}</p> }
 
-        { error && <p>{error.message}</p> }
+        <Row className="center-align">
+            <Input
+              s={12}
+              m={12}
+              l={10}
+              label="Adresse e-mail"
+              placeholder="example@test.com"
+              value={this.state.email}
+              onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
+              type="email"
+              autoComplete="on"
+            />
+            <Button 
+              s={12}
+              m={12}
+              l={2}
+              waves='light'
+              disabled={isInvalid}
+              type="submit"
+            >
+              Valider
+            </Button>
+        </Row>
       </form>
     );
   }

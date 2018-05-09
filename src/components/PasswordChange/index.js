@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Row, Input, Button} from 'react-materialize'
 
 import { auth } from '../../firebase';
 
@@ -45,31 +46,46 @@ class PasswordChangeForm extends Component {
       passwordOne === '';
 
     return (
-      <form onSubmit={this.onSubmit} autoComplete="on">
-        <label forhtml="passwordOne">Entrez le nouveau mot de passe</label>
-        <input
-          value={passwordOne}
-          id="passwordOne"
-          onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
-          type="password"
-          placeholder="Mot de passe"
-          autoComplete="on"
-        />
-        <label forhtml="passwordTwo">Confirmez le mot de passe</label>
-        <input
-          value={passwordTwo}
-          id="passwordTwo"
-          onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
-          type="password"
-          placeholder="Confirmez"
-          autoComplete="on"
-        />
-        <button disabled={isInvalid} type="submit">
-          Changer
-        </button>
-
-        { error && <p>{error.message}</p> }
-      </form>
+        <form onSubmit={this.onSubmit} autoComplete="on">
+          <Row>
+            <h3 className="h3-title">Changer de mot de passe</h3>
+            <hr className="separator"/>
+          </Row>
+          { error && <p s={12} m={12} l={12} className="error">{error.message}</p> }
+          <Row className="center-align">
+            <Input
+              s={12}
+              m={6}
+              l={5}
+              label="Nouveau mot de passe"
+              placeholder="Tapez votre nouveau mot de passe ici"
+              onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
+              type="password"
+              autoComplete="on"
+            />
+            <Input 
+              s={12}
+              m={6}
+              l={5}
+              label="Confirmez le mot de passe"
+              placeholder="Confirmez votre nouveau mot de passe ici"
+              id="passwordTwo"
+              onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
+              type="password"
+              autoComplete="on"
+            />
+            <Button 
+              s={12}
+              m={12}
+              l={2}
+              waves='light'
+              disabled={isInvalid}
+              type="submit"
+            >
+              Valider
+            </Button>
+          </Row>
+        </form>
     );
   }
 }

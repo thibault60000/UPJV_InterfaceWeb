@@ -12,3 +12,36 @@
     width: auto !important;
 	max-width: 22vh !important;
 }
+
+.h2-title {
+    font-size: 24pt;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.h3-title {
+    text-align: center;
+    font-size: 18pt;
+    text-transform: uppercase;
+}
+
+.separator {
+    width: 40%;
+    color: rgb(250, 250, 250);
+}
+
+.error {
+    background-color: rgb(196, 9, 9);
+    margin: 2%;
+    padding: 2%;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgb(221, 221, 221);
+}
+
+.text {
+    font-size: 14pt;
+    text-align: justify;
+    margin-left: 2%;
+}
