@@ -7,7 +7,6 @@ import * as routes from '../../constants/routes';
 
 const PasswordForgetPage = () =>
   <div>
-    <h1>Mot de passe oublié ?</h1>
     <PasswordForgetForm />
   </div>
 
@@ -85,7 +84,7 @@ class PasswordForgetForm extends Component {
   }
 }
 
-const PasswordForgetLink = () => <Link to={routes.PASSWORD_FORGET}>Mot de pass oublié ?</Link>
+const PasswordForgetLink = () => <Link to={routes.PASSWORD_FORGET}>Mot de passe oublié ?</Link>
 
 export default PasswordForgetPage;
 

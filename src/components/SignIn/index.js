@@ -10,11 +10,10 @@ import { LandingLink } from '../Landing';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faFacebookF } from '@fortawesome/fontawesome-free-brands' */
 
+import {Row, Col, Input, Button} from 'react-materialize'
+
 const SignInPage = ({ history }) =>
     <section>
-          <LandingLink />
-          <h1>Ecran de connexion</h1>
-          <SignUpLink />
           <SignInForm history={history} />
     </section>
 
@@ -70,32 +69,44 @@ class SignInForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit} autoComplete="on">
-        <label htmlFor="email">Identifiant</label>
-        <input
-          value={email}
-          onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
-          type="text"
-          id="email"
-          placeholder="Adresse-Mail"
-          autoComplete="on"
-        />
-        <label htmlFor="password">Mot de passe</label>
-        <input
-          value={password}
-          onChange={event => this.setState(updateByPropertyName('password', event.target.value))}
-          type="password"
-          id="password"
-          placeholder="**********"
-          autoComplete="on"
-        />
+        { error && <p s={12} m={12} l={12} className="error">{error.message}</p> }
+        <Row>
+          <Input
+            s={12}
+            m={12}
+            l={12}
+            label="Identifiant"
+            placeholder="example@test.com"
+            value={email}
+            onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
+            type="email"
+            autoComplete="on"
+          />
+        </Row>
+        <Row>
+          <Input
+            s={12}
+            m={12}
+            l={12}
+            label="Mot de passe"
+            placeholder="Entrez votre mot de passe"
+            value={password}
+            onChange={event => this.setState(updateByPropertyName('password', event.target.value))}
+            type="password"
+            autoComplete="on"
+          />
+        </Row>
 
-        <PasswordForgetLink></PasswordForgetLink>
-
-        <button disabled={isInvalid} type="submit">
-          Rejoindre
-        </button>
-
-        { error && <p>{error.message}</p> }
+        <Row className="center-align">
+          <Col s={6} m={6} l={6}>
+            <Button waves='light' disabled={isInvalid} type="submit">
+              Se connecter
+            </Button>
+          </Col>
+          <Col s={6} m={6} l={6}>
+            <PasswordForgetLink/>
+          </Col>
+        </Row>
       </form>
     );
   }

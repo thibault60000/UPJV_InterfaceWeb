@@ -45,3 +45,35 @@
     text-align: justify;
     margin-left: 2%;
 }
+
+.h2-icon {
+    font-size: 48pt;
+    text-align: center;
+}
+
+/* HOME */
+.home-title {
+    color: rgb(0, 0, 0);
+}
+
+.home-icon {
+    color: rgb(158, 132, 116);
+}
+
+#home-section {
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.home-h1-title {
+    color: white;
+}
+
+.home-h2-title {
+    color: white;
+}
+
+/* CONNEXION */
+.modal-overlay {
+    background: #fff;
+}
