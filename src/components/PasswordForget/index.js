@@ -84,7 +84,7 @@ class PasswordForgetForm extends Component {
   }
 }
 
-const PasswordForgetLink = () => <Link to={routes.PASSWORD_FORGET}>Mot de passe oublié ?</Link>
+const PasswordForgetLink = () => <Link className="modal-close btn" to={routes.PASSWORD_FORGET}>Mot de passe oublié ?</Link>
 
 export default PasswordForgetPage;
 

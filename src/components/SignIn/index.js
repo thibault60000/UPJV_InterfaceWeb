@@ -99,7 +99,7 @@ class SignInForm extends Component {
 
         <Row className="center-align">
           <Col s={6} m={6} l={6}>
-            <Button waves='light' disabled={isInvalid} type="submit">
+            <Button className="modal-close" waves='light' disabled={isInvalid} type="submit">
               Se connecter
             </Button>
           </Col>

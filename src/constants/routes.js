@@ -1,9 +1,11 @@
 export const LANDING = '/';
 export const SIGN_UP = '/signup';
 export const SIGN_IN = '/signin';
-export const PASSWORD_FORGET = '/pw-forget';
+export const PASSWORD_FORGET = '/forgot-password';
 export const HOME = '/home';
 export const ACCOUNT = '/account';
 export const ARTICLE = '/article';
 export const GROUP = '/group';
 export const ONE_ARTICLE = '/article/:id';
+export const A_PROPOS = "/a-propos";
+export const CONTACT = "/contact"

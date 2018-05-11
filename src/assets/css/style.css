@@ -1,20 +1,10 @@
 @import './scrollbar.css';
 
 
-.card .card-image img {
-    display: block;
-    border-radius: 2px 2px 0 0;
-    position: relative;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: auto !important;
-	max-width: 22vh !important;
-}
+
 
 .h2-title {
-    font-size: 24pt;
+    font-size: 20pt;
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
@@ -41,14 +31,41 @@
 }
 
 .text {
-    font-size: 14pt;
+    font-size: 12pt;
     text-align: justify;
     margin-left: 2%;
 }
 
-.h2-icon {
-    font-size: 48pt;
-    text-align: center;
+.link {
+    font-size: 12pt;
+}
+
+.btn {
+    background-color: rgb(0, 150, 136);
+}
+
+.parallax img {
+    display: inline;
+}
+
+/* NAV */
+nav {
+    background-color: white;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.nav-wrapper > div > a {
+    color: black;
+}
+
+.nav-wrapper > div > ul > li > a {
+    color: black;
+}
+
+.nav-wrapper > div > ul > li > a:hover {
+    background-color: rgb(0, 150, 136);
+    color: white;
 }
 
 /* HOME */
@@ -76,4 +93,28 @@
 /* CONNEXION */
 .modal-overlay {
     background: #fff;
+}
+
+/* FOOTER */
+.footer {
+    background-color: rgb(0, 150, 136);
+    margin: 0;
+}
+
+.footer-title {
+    color: rgb(255, 255, 255);
+    text-align: left;
+}
+
+.footer-text {
+    color: rgb(255, 255, 255);
+    margin: 0;
+}
+
+.footer-link {
+    color: rgb(255, 255, 255);
+}
+
+.footer-link:hover {
+    color: rgb(255, 255, 255);
 }

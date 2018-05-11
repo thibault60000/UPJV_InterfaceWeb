@@ -12,8 +12,10 @@ import withAuthorization from "../Session/withAuthorization";
 
 // Components
 import Navigation from "../Navigation";
-import ArticleList from "./ArticleList";
 import ArticleCreateForm from "./ArticleCreateForm";
+
+import {Parallax} from 'react-materialize';
+import Footer from "../Footer";
 
 class ArticlePage extends Component {
   constructor(props) {
@@ -28,27 +30,22 @@ class ArticlePage extends Component {
     db.onceGetArticles().then(snapshot => onSetArticles(snapshot.val()));
   }
   render() {
-    const { articles, authUser } = this.props;
-
     return (
       <div>
         <Navigation />
-        <h1>Article</h1>
+        <Parallax imageSrc="http://materializecss.com/images/parallax1.jpg"/>
+        <h2 className="h2-title">Création d'une nouvelle idée</h2>
         <ArticleCreateForm
           authUser={this.props.authUser}
           history={this.state.history}
         />
-        {!!articles && <ArticleList />}
-        {!articles && <p>Dommage, il n'y a pas d'articles</p>}
+        <Footer />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  articles: state.articleState.articles,
-  authUser: state.sessionState.authUser
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
   onSetArticles: articles => dispatch({ type: "ARTICLES_SET", articles })

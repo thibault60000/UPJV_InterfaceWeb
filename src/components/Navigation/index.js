@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import SignOutButton from '../SignOut';
@@ -15,32 +14,35 @@ const Navigation = ({ authUser }) =>
   </div>
 
 const NavigationAuth = () =>
-  <Navbar brand='logo' right>
-    <NavItem href={routes.LANDING} >
-      Bienvenue
-    </NavItem>
+  <Navbar brand='Logo' right>
     <NavItem href={routes.HOME}>
-      Accueil
+      Accueil (log)
+    </NavItem>
+    <NavItem href={routes.LANDING} >
+      Accueil (non log)
+    </NavItem>
+    <NavItem href={routes.CONTACT}>
+      Contact
+    </NavItem>
+    <NavItem href={routes.A_PROPOS}>
+      A propos
     </NavItem>
     <NavItem href={routes.ACCOUNT}>
-      Mon Compte
+      Mon compte
     </NavItem>
-
-    <NavItem href={routes.ARTICLE}>
-      Les articles
-    </NavItem>
-   
     <SignOutButton />
-    
   </Navbar>
 
 const NavigationNonAuth = () =>
-    <Navbar brand='logo' right>
+  <Navbar brand='Logo' right>
     <NavItem href={routes.LANDING} >
-      Bienvenue
+      Accueil
     </NavItem>
-    <NavItem href={routes.SIGN_IN}>
-      Se Connecter
+    <NavItem href={routes.CONTACT}>
+      Contact
+    </NavItem>
+    <NavItem href={routes.A_PROPOS}>
+      A propos
     </NavItem>
   </Navbar>
 

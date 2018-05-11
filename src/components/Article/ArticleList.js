@@ -24,7 +24,6 @@ class ArticleList extends Component {
   }
 
   componentDidMount() {
-    /* Users */
     const { onSetUsers } = this.props;
     db.onceGetUsers().then(snapshot => onSetUsers(snapshot.val()));
   }
@@ -34,62 +33,33 @@ class ArticleList extends Component {
     moment.locale("fr");
 
     return (
-      <div className="Container">
-        <h2>Liste des articles </h2>
-
+      <div className="container-fluid">
         <Row>
           {Object.keys(articles)
             .sort()
             .reverse()
             .map(key => (
-              <Col m={6} s={12} key={key}>
-                <Card className='blue-grey darken-1' textClassName='white-text' title={articles[key].title} >
+              <Col s={12} m={6} l={4}>
+                <Card header={<CardTitle image='http://materializecss.com/images/parallax1.jpg'>{articles[key].title}</CardTitle>} actions={[<Button floating large className='btn' waves='light' icon='remove_red_eye' onClick={() => {this.handleClick(articles[key].id);}}/>]}>
+                  <p>
+                    <strong>Thème</strong> : {articles[key].theme}
+                  </p>
+                  <br/>
+                  <p>
+                    <strong>Description</strong>
+                  </p>
+                  <p>
+                    <em>{articles[key].description}</em>
+                  </p>
+                  <br/>
+                  { 
+                    users.hasOwnProperty(articles[key].user) && (
                       <p>
-                        <strong>Description :{articles[key].description}   </strong>
+                          Créé par <strong>{ users[articles[key].user].username }</strong> le <strong>{ moment(articles[key].date).format("Do MMMM YYYY") }</strong>
                       </p>
-                      <p>
-                        { 
-                          users.hasOwnProperty(articles[key].user) && (
-                            <span>
-                            <strong> Créé par : </strong> {  users[articles[key].user].username } </span>
-                          )
-                        }
-                      </p>
-                      <p>
-                        {
-                          articles[key].editDate && (
-                            <span><strong>
-                              Edité le : </strong>
-                              {moment(articles[key].editDate).format("Do MMMM YYYY")}</span>       
-                          ) 
-                        }
-                      </p>
-                      <p>
-                        {
-                        !articles[key].editDate && (
-                          <span>
-                            
-                            <strong>Créé le : </strong> {moment(articles[key].date).format(
-                              "Do MMMM YYYY"
-                            )}
-                          </span>
-                        )}
-                      </p>  
-                
-                      <p>
-                        <Button
-                          onClick={() => {
-                            this.handleClick(articles[key].id);
-                          }}
-                        >
-                          Voir l'article{" "}
-                        </Button>
-                      </p>
-
-                  
+                    )
+                  }
                 </Card>
-                
-               
               </Col>
             ))}
         </Row>
