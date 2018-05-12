@@ -118,7 +118,8 @@ footer.page-footer {
 .parallax-container{
     height: 420px;
 }
-#root > section > div:nth-child(2) > div:nth-child(3) > div > div > button{
+#root > section > div:nth-child(2) > div:nth-child(3) > div > div > button,
+#root > div > div.parallax-container > div:nth-child(2) > div > a{
     padding: 1.8rem 2.5rem;
     line-height: 0.3rem;
     font-size: 1.2rem;
@@ -164,3 +165,52 @@ footer.page-footer {
 #modal_0 > div.modal-footer > button:hover{
     color: black !important;
 }
+
+
+h2#titreHome{
+    margin-top: 7.2rem !important;
+    /* color: #ffffff; */
+    font-size: 4.6rem !important;
+}
+
+div.container.displayArticleHome h2{
+    margin-top: 2.2rem;
+    display: block;
+    text-align: left;
+    font-size: 2.7rem;
+}
+    div.container.displayArticleHome h2 > em{
+        display: block;
+        margin-top: 0.3rem;
+        font-style: normal;
+        color: #4b4848;
+        font-size: 2.1rem;
+        font-weight: 400;
+    }
+
+    h2#titreCreaIdea{
+        margin-top: 11.2rem !important;
+        font-size: 5.8rem !important;
+    }
+
+    div.parallax.paraCrea{
+        opacity: 0.9;
+    }
+
+    #root > div > div:nth-child(1) > nav > div > div > ul.right.hide-on-med-and-down > li{
+        margin: 0 0.3rem;
+    }
+    a#returnBtnCrea{
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 1.4rem;
+        color: white;
+        background-color: #ec5858;
+        padding: 0.1rem 1.5rem;
+        border-radius: 5px;
+    }
+    
+    #createFieldPublic{
+        text-align: left;
+    }

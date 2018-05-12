@@ -14,8 +14,10 @@ import withAuthorization from "../Session/withAuthorization";
 import Navigation from "../Navigation";
 import ArticleCreateForm from "./ArticleCreateForm";
 
-import {Parallax} from 'react-materialize';
+import {Row} from 'react-materialize';
 import Bottom from "../Bottom";
+
+import image3 from '../../assets/images/background3.jpg';
 
 class ArticlePage extends Component {
   constructor(props) {
@@ -33,8 +35,18 @@ class ArticlePage extends Component {
     return (
       <div>
         <Navigation />
-        <Parallax imageSrc="http://materializecss.com/images/parallax1.jpg"/>
-        <h2 className="h2-title">Création d'une nouvelle idée</h2>
+        <div className="parallax-container">
+            <div className="valign-wrapper center-align">
+                <Row>
+                    <h2 className="home-h2-title" id="titreCreaIdea">Créer une idée </h2>
+                </Row>
+            </div>
+            <div className="parallax paraCrea">
+                <img src={image3} />
+            </div>
+            <a href="#" id="returnBtnCrea"> _Retour </a>
+        </div>
+        
         <ArticleCreateForm
           authUser={this.props.authUser}
           history={this.state.history}

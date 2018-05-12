@@ -25,7 +25,8 @@ const INITIAL_STATE = {
   user: "",
   isPublic: true,
   keywords: null,
-  limite: 50
+  limite: 50,
+  theme: ""
 };
 
 class ArticleCreateForm extends Component {
@@ -46,7 +47,8 @@ class ArticleCreateForm extends Component {
       avatar,
       isPublic,
       keywords,
-      limite
+      limite,
+      theme
     } = this.state;
     const { history, authUser } = this.props;
     const id = authUser.uid + Date.now();
@@ -68,8 +70,8 @@ class ArticleCreateForm extends Component {
         username,
         isPublic,
         keywords,
-        limite,
-        avatar
+        limite, 
+        theme
       )
       .then(() => {
         this.setState(() => ({
@@ -91,12 +93,14 @@ class ArticleCreateForm extends Component {
       error,
       isPublic,
       keywords,
-      limite
+      limite,
+      theme
     } = this.state;
     const isInvalid = title === "" || description === "" || keywords === "";
 
     return (
       <div className="container">
+       <h1> Création d'une nouvelle idée</h1>
         {error && <p>{error.message}</p>}
         <form onSubmit={this.onSubmit}>
             <Row className="center-align">
@@ -106,7 +110,7 @@ class ArticleCreateForm extends Component {
                 s={12}
                 m={6}
                 l={6}
-                label="Titre de l'article"
+                label="Titre de l'idée"
                 onChange={event =>
                   this.setState(updateByPropertyName("title", event.target.value))
                 }
@@ -118,6 +122,10 @@ class ArticleCreateForm extends Component {
                 type='select'
                 label="Sélectionner un thème"
                 defaultValue='1'
+                value={theme}
+                onChange={event =>
+                  this.setState(updateByPropertyName("theme", event.target.value))
+                }
               >
                 <option value='1'>Thème 1</option>
                 <option value='2'>Thème 2</option>
@@ -129,7 +137,7 @@ class ArticleCreateForm extends Component {
                 s={12}
                 m={6}
                 l={6}
-                label="Description de l'article"
+                label="Description de l'idée"
                 onChange={event =>
                   this.setState(
                     updateByPropertyName("description", event.target.value)
@@ -150,13 +158,10 @@ class ArticleCreateForm extends Component {
                 }
               />
               <Input
-                type="range"
                 s={12}
                 m={12}
-                l={12}
-                min="5"
-                max="100"
-                step="5"
+                l={6}
+                type="number"
                 label="Limite de participants"
                 value={limite}
                 onChange={event =>
@@ -165,20 +170,18 @@ class ArticleCreateForm extends Component {
                   )
                 }
               />
-              <Input
-                s={12}
-                m={12}
-                l={6}
-                name="checkboxIsPublic"
-                type="checkbox"
-                value={isPublic}
-                label="Public"
-                onChange={event =>
+              <div className="col input-field s12 m12 l6" id="createFieldPublic">
+              <label>
+                <input type="checkbox" name="checkboxIsPublic" value={isPublic} id="checkboxIsPublic" onChange={event =>
                   this.setState(
                     updateByPropertyName("isPublic", event.target.value)
                   )
-                }
-              />
+                } />
+                 Rendre l'idée publique </label>
+              </div>
+              </Row>
+              <Row>
+              
               <Button
                 s={12}
                 m={12}
@@ -186,9 +189,9 @@ class ArticleCreateForm extends Component {
                 waves="light"
                 disabled={isInvalid}
                 type="submit">
-                Créer
+                Créer l'idée
               </Button>              
-            </Row>
+              </Row>
         </form>
       </div>
     );

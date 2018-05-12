@@ -10,6 +10,8 @@ import { db, st } from "../../firebase";
 import * as moment from "moment";
 import "moment/locale/fr";
 
+import sampleArticle from '../../assets/images/sample-1.jpg';
+
 class ArticleList extends Component {
   constructor(props) {
     super(props);
@@ -33,14 +35,14 @@ class ArticleList extends Component {
     moment.locale("fr");
 
     return (
-      <div className="container-fluid">
+      <div>
         <Row>
           {Object.keys(articles)
             .sort()
             .reverse()
             .map(key => (
               <Col s={12} m={6} l={4}>
-                <Card header={<CardTitle image='http://materializecss.com/images/parallax1.jpg'>{articles[key].title}</CardTitle>} actions={[<Button floating large className='btn' waves='light' icon='remove_red_eye' onClick={() => {this.handleClick(articles[key].id);}}/>]}>
+                <Card header={<CardTitle image={sampleArticle} >{articles[key].title}</CardTitle>} actions={[<Button floating large className='btn' waves='light' icon='remove_red_eye' onClick={() => {this.handleClick(articles[key].id);}}/>]}>
                   <p>
                     <strong>Thème</strong> : {articles[key].theme}
                   </p>

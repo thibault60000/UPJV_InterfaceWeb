@@ -11,6 +11,8 @@ import ArticleList from '../Article/ArticleList';
 
 import {Parallax, Row, Modal, Button} from 'react-materialize';
 
+import image3 from '../../assets/images/background3.jpg';
+
 class HomePage extends Component {
   componentDidMount() {
     const { onSetUsers } = this.props;
@@ -33,7 +35,7 @@ class HomePage extends Component {
         <div className="parallax-container">
             <div className="valign-wrapper center-align">
                 <Row>
-                    <h2 className="home-h2-title">Êtes-vous prêts ?</h2>
+                    <h2 className="home-h2-title" id="titreHome">Êtes-vous prêts ?</h2>
                 </Row>
             </div>
             <div className="valign-wrapper center-align">
@@ -42,13 +44,15 @@ class HomePage extends Component {
                 </Row>
             </div>
             <div className="parallax">
-                <img src="http://materializecss.com/images/parallax1.jpg"/>
+                <img src={image3} />
             </div>
         </div>
         
-        <h2 className="h2-title">Les derniers projets du moment</h2>
-        { !!articles && <ArticleList />}
-        { !articles && <p>Dommage, il n'y a pas d'articles</p>}
+        <div className="container displayArticleHome ">
+          <h2 className="h2-title">Les derniers projets <em>du moment</em></h2>
+          { !!articles && <ArticleList />}
+          { !articles && <p>Dommage, il n'y a pas d'articles</p>}
+        </div>
         <Bottom />
       </div>
     );
