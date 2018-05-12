@@ -76,7 +76,6 @@ class SignInForm extends Component {
             m={12}
             l={12}
             label="Identifiant"
-            placeholder="example@test.com"
             value={email}
             onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
             type="email"
@@ -89,7 +88,6 @@ class SignInForm extends Component {
             m={12}
             l={12}
             label="Mot de passe"
-            placeholder="Entrez votre mot de passe"
             value={password}
             onChange={event => this.setState(updateByPropertyName('password', event.target.value))}
             type="password"

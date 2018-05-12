@@ -134,3 +134,33 @@ footer.page-footer {
     text-align: center;
     margin: 0 auto;
 }
+
+
+/* LA MODALE */
+#modal_0{
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.modal-overlay {
+    background: #474646 !important;
+}
+.modal.modal-fixed-footer {
+    padding: 0;
+    height: 37% !important;
+}
+.modal.modal-fixed-footer .modal-content{
+    overflow: hidden !important;
+}
+#modal_0 > div.modal-content > section > form > div.row.center-align > div:nth-child(2) > a{
+    background-color: #b57742;
+}
+#modal_0 > div.modal-footer > button{
+    background-color: rgb(150, 159, 158);
+    color: white;
+}
+#modal_0 > div.modal-footer > button:hover{
+    color: black !important;
+}
