@@ -1,8 +1,22 @@
 @import './scrollbar.css';
 
+#root > section > div:nth-child(2) > div:nth-child(3) > div > div > button,
+#root > div > div.parallax-container > div:nth-child(2) > div > a {
+    padding: 1.8rem 2.5rem;
+    line-height: 0.3rem;
+    font-size: 1.2rem;
+}
 
+#root > section > div:nth-child(1) > nav > div > div > ul.right.hide-on-med-and-down > button,
+#nav-mobile > button {
+    margin: 0 0.9rem;
+}
 
+#root > div > div:nth-child(1) > nav > div > div > ul.right.hide-on-med-and-down > li{
+    margin: 0 0.3rem;
+}
 
+/* GENERAL */
 .h2-title {
     font-size: 20pt;
     text-align: center;
@@ -13,6 +27,17 @@
 .h3-title {
     text-align: center;
     font-size: 18pt;
+    text-transform: uppercase;
+}
+
+h4 {
+    font-size: 14pt;
+    text-align: center;
+    color: rgb(0, 150, 136);
+    text-transform: uppercase;
+}
+
+.text-uppercase {
     text-transform: uppercase;
 }
 
@@ -36,6 +61,18 @@
     margin-left: 2%;
 }
 
+.bold {
+    font-weight: bold;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
 .link {
     font-size: 12pt;
 }
@@ -44,8 +81,59 @@
     background-color: rgb(0, 150, 136);
 }
 
+.background-brown {
+    background-color: #c97c39;
+}
+
+.background-brown:hover {
+    background-color: #cc915e;;
+}
+
+.return-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 1.4rem;
+    color: white;
+    background-color: #ec5858;
+    padding: 0.1rem 1.5rem;
+    border-radius: 5px;
+}
+
+.no-m {
+    margin: 0;
+}
+
+.m-1 {
+    margin: 1% !important;
+}
+
+.m-2 {
+    margin: 2% !important;
+}
+
+.m-4 {
+    margin: 4% !important;
+}
+
+.m-5 {
+    margin: 5% !important;
+}
+
 .parallax img {
-    display: inline;
+    display: inline-block;
+}
+
+.tabs .tab a, .tabs .tab a {
+    color: rgb(10, 77, 70);
+}
+
+.tabs .tab a:hover, .tabs .tab a.active {
+    color: rgb(0, 150, 136);
+}
+
+.tabs .indicator {
+    background-color: rgb(0, 150, 136);
 }
 
 /* NAV */
@@ -69,14 +157,6 @@ nav {
 }
 
 /* HOME */
-.home-title {
-    color: rgb(0, 0, 0);
-}
-
-.home-icon {
-    color: rgb(107, 83, 69);
-}
-
 #home-section {
     padding-top: 5%;
     padding-bottom: 5%;
@@ -88,6 +168,31 @@ nav {
 
 .home-h2-title {
     color: white;
+    font-size: 3rem !important;
+}
+
+.home-title {
+    color: rgb(0, 0, 0);
+}
+
+.home-icon {
+    color: rgb(107, 83, 69);
+}
+
+.home-project-title {
+    margin-top: 2.2rem;
+    display: block;
+    text-align: left;
+    font-size: 2.7rem;
+}
+
+.home-project-title > em {
+    display: block;
+    margin-top: 0.3rem;
+    font-style: normal;
+    color: #4b4848;
+    font-size: 2.1rem;
+    font-weight: 400;
 }
 
 /* CONNEXION */
@@ -95,14 +200,31 @@ nav {
     background: #fff;
 }
 
+.forgot-link {
+    background-color: #b57742;
+    height: auto;
+    padding: 1%;
+}
+
+a.forgot-link:hover {
+    background-color: #c09066;
+}
+
 /* FOOTER */
 footer.page-footer {
-    padding-top: 2rem;
     background-color: #009688;
+}
+
+.footer-link:hover {
+    color: rgb(255, 255, 255);
 }
 
 
 /* FIRST PARALLAX */
+.parallax-container {
+    height: 60vh;
+}
+
 #root > section > div:nth-child(2) > div:nth-child(1){
     margin-top: 3rem;
 }
@@ -110,107 +232,130 @@ footer.page-footer {
 #root > section > div:nth-child(2) > div:nth-child(1) > div > h1{
     color: #2bbbad;
 }
+
 #root > section > div:nth-child(2) > div:nth-child(2) > div > h2{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     font-size: 2.34rem;
     margin-top: -0.2rem;
 }
-.parallax-container{
-    height: 420px;
+
+h1.title-parallax-connected-with-elements {
+    color: #009688;
+    margin-top: 18vh;
 }
-#root > section > div:nth-child(2) > div:nth-child(3) > div > div > button,
-#root > div > div.parallax-container > div:nth-child(2) > div > a{
-    padding: 1.8rem 2.5rem;
-    line-height: 0.3rem;
-    font-size: 1.2rem;
+
+h2.title-parallax-connected-with-elements {
+    color: #FFFFFF;
 }
-#root > section > div:nth-child(1) > nav > div > div > ul.right.hide-on-med-and-down > button,
-#nav-mobile > button{
-    margin: 0 0.9rem;
+
+h1.title-parallax-disconnected-with-elements {
+    color: #009688;
+    margin-top: 10vh;
+}
+
+h2.title-parallax-disconnected-with-elements {
+    color: #FFFFFF;
+}
+
+h1.title-parallax-without-elements {
+    margin-top: 22vh;
+}
+
+@media (max-width:600px) {
+    .parallax-container {
+        height: auto;
+    }
+
+    h1.title-parallax-connected-with-elements {
+        color: #009688;
+        margin-top: 5vh;
+    }
+    
+    h2.title-parallax-connected-with-elements {
+        color: #FFFFFF;
+    }
+    
+    h1.title-parallax-disconnected-with-elements {
+        color: #009688;
+        margin-top: 10vh;
+    }
+    
+    h2.title-parallax-disconnected-with-elements {
+        color: #FFFFFF;
+    }
+    
+    h1.title-parallax-without-elements {
+        margin-top: 7.5vh;
+        margin-bottom: 7.5vh;
+    }
 }
 
 /* BLOCS AVEC ICONES */
-#home-section > div > div > p{
-    max-width: 310px;
+#home-section > div > div > p {
+    max-width: 400px;
     text-align: center;
-    margin: 0 auto;
 }
 
-
-/* LA MODALE */
-#modal_0{
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-}
-
-.modal-overlay {
-    background: #474646 !important;
-}
-.modal.modal-fixed-footer {
-    padding: 0;
-    height: 37% !important;
-}
-.modal.modal-fixed-footer .modal-content{
-    overflow: hidden !important;
-}
-#modal_0 > div.modal-content > section > form > div.row.center-align > div:nth-child(2) > a{
-    background-color: #b57742;
-}
-#modal_0 > div.modal-footer > button{
-    background-color: rgb(150, 159, 158);
-    color: white;
-}
-#modal_0 > div.modal-footer > button:hover{
-    color: black !important;
-}
-
-
-h2#titreHome{
-    margin-top: 7.2rem !important;
-    /* color: #ffffff; */
-    font-size: 4.6rem !important;
-}
-
-div.container.displayArticleHome h2{
-    margin-top: 2.2rem;
-    display: block;
-    text-align: left;
-    font-size: 2.7rem;
-}
-    div.container.displayArticleHome h2 > em{
-        display: block;
-        margin-top: 0.3rem;
-        font-style: normal;
-        color: #4b4848;
-        font-size: 2.1rem;
-        font-weight: 400;
+/* MODAL */
+@media (max-width:600px) {
+    .modal {
+        width: 50vh;
     }
+}
 
-    h2#titreCreaIdea{
-        margin-top: 11.2rem !important;
-        font-size: 5.8rem !important;
+@media (min-width:600px) and (max-width:992px) {
+    .modal {
+        width: 60vh;
     }
+}
 
-    div.parallax.paraCrea{
-        opacity: 0.9;
+@media (min-width:992px) {
+    .modal {
+        width: 70vh;
     }
+}
 
-    #root > div > div:nth-child(1) > nav > div > div > ul.right.hide-on-med-and-down > li{
-        margin: 0 0.3rem;
-    }
-    a#returnBtnCrea{
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-        font-size: 1.4rem;
-        color: white;
-        background-color: #ec5858;
-        padding: 0.1rem 1.5rem;
-        border-radius: 5px;
-    }
-    
-    #checkboxIsPublic{
-        text-align: left;
-    }
+.modal-header,
+.modal-content > h4 {
+    color: rgb(0, 150, 136);
+    font-size: 24pt;
+    margin-bottom: 10%;
+}
+
+.modal-footer {
+    display: none;
+}
+
+.modal-btn {
+    height: auto;
+    padding: 4%;
+}
+
+/* ARTICLE */
+.article-title {
+    color: rgb(100, 100, 100);
+}
+
+.commentaire {
+    font-size: 12pt;
+    font-style: italic;
+}
+
+.collapsible-title {
+    font-size: 14pt;
+}
+
+.collapsible-text {
+    font-size: 10pt;
+    margin: 0;
+}
+
+.ajout-commentaire {
+    font-size: 14pt;
+    text-transform: initial;
+}
+
+.modification-article {
+    font-size: 14pt;
+    text-transform: initial;
+}

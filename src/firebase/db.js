@@ -41,13 +41,14 @@ export const removeArticle = (id) => {
   db.ref('articles').child(id).remove();
 }
 
-export const updateArticle = (id, title, description, editDate, keywords, limite, isPublic) => 
+export const updateArticle = (id, title, description, editDate, keywords, limite, theme, isPublic) => 
   db.ref(`articles/${id}`).update({
     title,
     description,
     editDate,
     keywords,
     limite,
+    theme,
     isPublic
   })
 
@@ -69,3 +70,10 @@ export const onceGetCommentaires = () =>
 
 export const onceGetCommentaireId = (id) =>
   db.ref('commentaires').orderByChild('articleID').equalTo(`${id}`); 
+// Contact messages
+export const doCreateContactMessage = (id, email, message) => 
+  db.ref(`contact/${id}`).set({
+    id,
+    email,
+    message
+  });

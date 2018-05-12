@@ -1,18 +1,20 @@
 import React from 'react';
 
-import {Col, Footer} from 'react-materialize'
+import * as routes from '../../constants/routes';
+
+import { Footer } from 'react-materialize'
 
 const Bottom = () =>
     <Footer copyrights="&copy; 2018 Copyright IdeaBook"
         moreLinks={
-        <a className="grey-text text-lighten-4 right" href="#!">Université de Picardie Jules Vernes</a>
+        <a className="grey-text text-lighten-4 right" href="https://www.u-picardie.fr/">Université de Picardie Jules Vernes</a>
         }
         links={
         <ul>
-            <li><a className="grey-text text-lighten-3" href="#!">Contact</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">A Propos</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">Accueil</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">Inscription</a></li>
+            <li><a className="text-uppercase grey-text text-lighten-3" href={routes.CONTACT}>Contact</a></li>
+            <li><a className="text-uppercase grey-text text-lighten-3" href={routes.A_PROPOS}>à propos</a></li>
+            <li><a className="text-uppercase grey-text text-lighten-3" href={routes.LANDING}>Accueil</a></li>
+            <li><a className="text-uppercase grey-text text-lighten-3" href={routes.SIGN_UP}>Inscription</a></li>
         </ul>
         }
         className='example'

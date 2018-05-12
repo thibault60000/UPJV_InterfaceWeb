@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import { history } from "../../store";
-
-// Firebase
-import { db } from "../../firebase";
+import * as routes from "../../constants/routes";
 
 // HOC
 import withAuthorization from "../Session/withAuthorization";
@@ -14,7 +12,7 @@ import withAuthorization from "../Session/withAuthorization";
 import Navigation from "../Navigation";
 import ArticleCreateForm from "./ArticleCreateForm";
 
-import {Row} from 'react-materialize';
+import { Container, Row, Col } from 'react-materialize';
 import Bottom from "../Bottom";
 
 import image3 from '../../assets/images/background3.jpg';
@@ -35,21 +33,29 @@ class ArticlePage extends Component {
       <div>
         <Navigation />
         <div className="parallax-container">
-            <div className="valign-wrapper center-align">
+            <div className="center-align">
                 <Row>
-                    <h2 className="home-h2-title" id="titreCreaIdea">Créer une idée </h2>
+                    <h1 className="home-h1-title bold title-parallax-without-elements">Créer une idée </h1>
                 </Row>
             </div>
-            <div className="parallax paraCrea">
+            <div className="parallax">
                 <img src={image3} />
             </div>
-            <a href="#" id="returnBtnCrea"> _Retour </a>
+            <Row className="valign-wrapper center-align">
+              <a className="return-btn" href={routes.LANDING}>◄ Retour</a>
+            </Row>
         </div>
         
-        <ArticleCreateForm
-          authUser={this.props.authUser}
-          history={this.state.history}
-        />
+        <Container>
+          <Row className="m-5">
+            <Col s={12} m={12} l={12}>
+              <ArticleCreateForm
+                authUser={this.props.authUser}
+                history={this.state.history}
+              />
+            </Col>
+          </Row>
+        </Container>
         <Bottom />
       </div>
     );

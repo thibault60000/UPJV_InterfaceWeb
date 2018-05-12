@@ -8,6 +8,8 @@ import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
 import OneArticlePage from '../OneArticle';
+import ContactPage from '../Contact';
+import AProposPage from "../Apropos"
 
 import * as routes from '../../constants/routes';
 import { withRouter } from 'react-router-dom';
@@ -23,6 +25,8 @@ const App = ({ history }) => {
           <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
           <Route exact path={routes.ARTICLE} component={() => <ArticlePage/>} />
           <Route exact path={routes.ONE_ARTICLE} component={() => <OneArticlePage/>} />
+          <Route exact path={routes.CONTACT} component={() => <ContactPage/>} />
+          <Route exact path={routes.A_PROPOS} component={() => <AProposPage/>} />
     </Switch>
   )
 }

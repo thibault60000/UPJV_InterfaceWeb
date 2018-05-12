@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // Firebase
 import { db } from "../../firebase";
 
-import { Input, Button, Col, Row } from "react-materialize";
+import { Input, Button, Container, Row } from "react-materialize";
 
 const updateByPropertyName = (propertyName, value) => () => ({
   [propertyName]: value
@@ -20,12 +20,13 @@ class OneArticleEditForm extends Component {
       error: null,
       keywords: this.props.articles.keywords,
       limite: this.props.articles.limite,
+      theme: this.props.articles.theme,
       isPublic: this.props.articles.isPublic,
     };
   }
 
   onSubmit = event => {
-    const { title, description, id, keywords, limite, isPublic } = this.state;
+    const { title, description, id, keywords, limite, isPublic, theme } = this.state;
     const { history } = this.props;
     const editDate = Date.now();
 
@@ -37,6 +38,7 @@ class OneArticleEditForm extends Component {
         editDate,
         keywords,
         limite,
+        theme,
         isPublic
       )
       .catch(error => {
@@ -52,97 +54,103 @@ class OneArticleEditForm extends Component {
   };
 
   render() {
-    const { title, description, error, authUser, keywords, limite, isPublic } = this.state;
+    const { title, description, error, authUser, keywords, limite, isPublic, theme } = this.state;
     const isInvalid = title === "" || description === "" || keywords === "";
 
     return (
-    
-        
-
-      <div className="container">
-      <p> Editez votre idée <strong> {authUser}</strong>
-        </p>
-      <form onSubmit={this.onSubmit}>
-        <fieldset>
-          <Row>
+      <Container>
+        { error && <p s={12} m={12} l={12} className="error">{error.message}</p> }
+        <form onSubmit={this.onSubmit}>
+          <Row className="center-align">
             <Input
                 type="text"
-                value={title}
                 s={12}
+                m={12}
+                l={12}
+                defaultValue={title}
                 label="Titre de l'article"
                 onChange={event =>
                   this.setState(updateByPropertyName("title", event.target.value))
                 }
-              />
-              <Input
-                type="textarea"
-                value={description}
+            />
+            <Input
+              s={12}
+              m={12}
+              l={12}
+              label="Thème"
+              type="select"
+              value={theme}
+              onChange={event =>
+                this.setState(updateByPropertyName("theme", event.target.value))
+              }
+            >
+              <option value="1">Thème 1</option>
+              <option value="2">Thème 2</option>
+              <option value="3">Thème 3</option>
+            </Input>
+            <Input
+              type="text"
+              s={12}
+              m={12}
+              l={12}
+              defaultValue={description}
+              label="Description de l'article"
+              onChange={event =>
+                this.setState(
+                  updateByPropertyName("description", event.target.value)
+                )
+              }
+            />
+            <Input
+              type="text"
+              defaultValue={keywords}
+              s={12}
+              m={12}
+              l={12}
+              label="Mots clés (séparés par des virgules)"
+              onChange={event =>
+                this.setState(
+                  updateByPropertyName("keywords", event.target.value)
+                )
+              }
+            />
+            <Input
+              s={12}
+              m={12}
+              l={12}
+              type="number"
+              label="Limite de participants"
+              defaultValue={limite}
+              onChange={event =>
+                this.setState(
+                  updateByPropertyName("limite", event.target.value)
+                )
+              }
+            />
+            <Input
+              s={12}
+              m={12}
+              l={12}
+              name="checkboxIsPublic"
+              type="checkbox"
+              defaultValue={isPublic}
+              label="Rendre l'idée publique"
+              onChange={event =>
+                this.setState(
+                  updateByPropertyName("isPublic", event.target.value)
+                )
+              }
+            />
+            <Button 
                 s={12}
-                label="Description de l'article"
-                onChange={event =>
-                  this.setState(
-                    updateByPropertyName("description", event.target.value)
-                  )
-                }
-              />
-              <Col s={12}>
-                <label forhtml="rangeArticle">Nombre maximum de personnes</label>
-                <input
-                  type="range"
-                  min="5"
-                  max="100"
-                  step="5"
-                  id="rangeArticle"
-                  value={limite}
-                  onChange={event =>
-                    this.setState(
-                      updateByPropertyName("limite", event.target.value)
-                    )
-                  }
-                />
-                <output
-                  forhtml="rangeArticle"
-                  value={limite}
-                  name="rangeArticleOutput"
-                >
-                  {limite}
-                </output>
-              </Col>
-              <Input
-                type="textarea"
-                value={keywords}
-                s={12}
-                label="Mots clés (séparés par des virgules)"
-                onChange={event =>
-                  this.setState(
-                    updateByPropertyName("keywords", event.target.value)
-                  )
-                }
-              />
-              
-              <Input
-                s={12}
-                name="checkboxIsPublic"
-                type="checkbox"
-                value={isPublic}
-                label="Publique ?"
-                onChange={event =>
-                  this.setState(
-                    updateByPropertyName("isPublic", event.target.value)
-                  )
-                }
-              />
-
-              <Button waves="light" disabled={isInvalid} type="submit">
-                Modifier
-              </Button>
-
-              {error && <p>{error.message}</p>}
-
-            </Row>
-          </fieldset>
+                m={12}
+                l={12}
+                className="modal-close" waves="light" disabled={isInvalid} type="submit">
+              Modifier
+            </Button>
+          </Row>
         </form>
-      </div>
+      </Container>
     );
   }
 }

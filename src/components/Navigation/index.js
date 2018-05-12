@@ -15,17 +15,14 @@ const Navigation = ({ authUser }) =>
 
 const NavigationAuth = () =>
   <Navbar brand='Idea Book' right>
-    <NavItem href={routes.HOME}>
-      Accueil (log)
-    </NavItem>
     <NavItem href={routes.LANDING} >
-      Accueil (non log)
+      Accueil
     </NavItem>
     <NavItem href={routes.CONTACT}>
       Contact
     </NavItem>
     <NavItem href={routes.A_PROPOS}>
-      A propos
+      À propos
     </NavItem>
     <NavItem href={routes.ACCOUNT}>
       Mon compte
@@ -37,6 +34,9 @@ const NavigationNonAuth = () =>
   <Navbar brand='Idea Book' right>
     <NavItem href={routes.LANDING} >
       Accueil
+    </NavItem>
+    <NavItem href={routes.SIGN_UP} >
+      Inscription
     </NavItem>
     <NavItem href={routes.CONTACT}>
       Contact

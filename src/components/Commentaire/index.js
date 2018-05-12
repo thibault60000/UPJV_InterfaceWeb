@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { compose } from "recompose";
-import { withRouter } from "react-router-dom";
 import { history } from "../../store";
-
-// Firebase
-import { db } from "../../firebase";
 
 // HOC
 import withAuthorization from "../Session/withAuthorization";
@@ -34,9 +29,8 @@ class CommentairePage extends Component {
 
     return (
       <div>
-          { articleId  && <CommentaireList articleID={articleId} authUser={authUser} /> }
-         
-         <CommentaireCreateForm articleID={articleId} authUser={authUser} history={history} />
+        { articleId  && <CommentaireList articleID={articleId} authUser={authUser} /> }
+        <CommentaireCreateForm articleID={articleId} authUser={authUser} history={history} />
       </div>
     );
   }

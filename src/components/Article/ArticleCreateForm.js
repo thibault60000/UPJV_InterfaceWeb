@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 // Firebase
 import { db } from "../../firebase";
-import firebase from "firebase";
 
 // Routes
 import * as routes from "../../constants/routes";
@@ -10,11 +9,8 @@ import * as routes from "../../constants/routes";
 import {
   Input,
   Row,
-  Col,
   Button,
-  Dropdown,
-  NavItem,
-  Icon
+  Container
 } from "react-materialize";
 
 const updateByPropertyName = (propertyName, value) => () => ({
@@ -86,7 +82,7 @@ class ArticleCreateForm extends Component {
         this.setState(() => ({
           ...INITIAL_STATE
         }));
-        history.push(routes.HOME);
+        history.push(routes.LANDING);
       })
       .catch(error => {
         this.setState(updateByPropertyName("error", error));
@@ -108,9 +104,8 @@ class ArticleCreateForm extends Component {
     const isInvalid = title === "" || description === "" || keywords === "";
 
     return (
-      <div className="container">
-        <h1> Création d'une nouvelle idée</h1>
-        {error && <p>{error.message}</p>}
+      <Container>
+        { error && <p s={12} m={12} l={12} className="error">{error.message}</p> }
         <form onSubmit={this.onSubmit}>
           <Row className="center-align">
             <Input
@@ -187,7 +182,7 @@ class ArticleCreateForm extends Component {
                 name="checkboxIsPublic"
                 type="checkbox"
                 defaultValue={isPublic}
-                label="Rendre l'idée publique "
+                label="Rendre l'idée publique"
                 onChange={event =>
                   this.setState(
                     updateByPropertyName("isPublic", event.target.value)
@@ -209,7 +204,7 @@ class ArticleCreateForm extends Component {
             </Button>
           </Row>
         </form>
-      </div>
+      </Container>
     );
   }
 }

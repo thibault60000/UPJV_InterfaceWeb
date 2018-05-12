@@ -9,7 +9,7 @@ import Navigation from '../Navigation';
 import Bottom from '../Bottom';
 import ArticleList from '../Article/ArticleList';
 
-import {Parallax, Row, Modal, Button} from 'react-materialize';
+import {Row} from 'react-materialize';
 
 import image3 from '../../assets/images/background3.jpg';
 
@@ -33,14 +33,14 @@ class HomePage extends Component {
       <div>
         <Navigation />
         <div className="parallax-container">
-            <div className="valign-wrapper center-align">
+            <div className="center-align">
                 <Row>
-                    <h2 className="home-h2-title" id="titreHome">Êtes-vous prêts ?</h2>
+                    <h2 className="home-h2-title">Êtes-vous prêts ?</h2>
                 </Row>
             </div>
             <div className="valign-wrapper center-align">
                 <Row>
-                  <a className="btn test" href={routes.ARTICLE}>Créer une idée</a>
+                  <a className="btn" href={routes.ARTICLE}>Créer une idée</a>
                 </Row>
             </div>
             <div className="parallax">

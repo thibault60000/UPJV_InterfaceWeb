@@ -4,7 +4,7 @@ import { history } from "../../store";
 import { Card, CardTitle, Button, Col, Row } from "react-materialize";
 
 // Firebase
-import { db, st } from "../../firebase";
+import { db } from "../../firebase";
 
 /* Moment.js */
 import * as moment from "moment";
@@ -42,18 +42,18 @@ class ArticleList extends Component {
             .reverse()
             .map(key => (
               <Col s={12} m={6} l={4}>
-                <Card header={<CardTitle image={sampleArticle} >{articles[key].title}</CardTitle>} actions={[<Button floating large className='btn' waves='light' icon='remove_red_eye' onClick={() => {this.handleClick(articles[key].id);}}/>]}>
+                <Card header={<CardTitle image={sampleArticle} >{articles[key].title}</CardTitle>} actions={[<Button floating className='btn background-brown' waves='light' icon='remove_red_eye' onClick={() => {this.handleClick(articles[key].id);}}/>]}>
                   <p>
                     <strong>Thème</strong> : {articles[key].theme}
                   </p>
                   <br/>
-                  <p>
+                  {/* <p>
                     <strong>Description</strong>
                   </p>
                   <p>
                     <em>{articles[key].description}</em>
                   </p>
-                  <br/>
+                  <br/> */}
                   { 
                     users.hasOwnProperty(articles[key].user) && (
                       <p>

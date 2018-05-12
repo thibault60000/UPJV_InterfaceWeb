@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {Row, Input, Button} from 'react-materialize'
+import * as routes from "../../constants/routes";
+
+import { history } from '../../store';
 
 import { auth } from '../../firebase';
 
@@ -26,6 +29,7 @@ class PasswordChangeForm extends Component {
     auth.doPasswordUpdate(passwordOne)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
+        history.push(routes.ACCOUNT);
       })
       .catch(error => {
         this.setState(updateByPropertyName('error', error));
@@ -47,16 +51,12 @@ class PasswordChangeForm extends Component {
 
     return (
         <form onSubmit={this.onSubmit} autoComplete="on">
-          <Row>
-            <h3 className="h3-title">Changer de mot de passe</h3>
-            <hr className="separator"/>
-          </Row>
           { error && <p s={12} m={12} l={12} className="error">{error.message}</p> }
           <Row className="center-align">
             <Input
               s={12}
               m={6}
-              l={5}
+              l={6}
               label="Nouveau mot de passe"
               placeholder="Tapez votre nouveau mot de passe ici"
               onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
@@ -66,7 +66,7 @@ class PasswordChangeForm extends Component {
             <Input 
               s={12}
               m={6}
-              l={5}
+              l={6}
               label="Confirmez le mot de passe"
               placeholder="Confirmez votre nouveau mot de passe ici"
               id="passwordTwo"
@@ -77,7 +77,7 @@ class PasswordChangeForm extends Component {
             <Button 
               s={12}
               m={12}
-              l={2}
+              l={12}
               waves='light'
               disabled={isInvalid}
               type="submit"

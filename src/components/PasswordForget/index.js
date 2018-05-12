@@ -1,13 +1,49 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {Row, Input, Button} from 'react-materialize'
 
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
 
+import image1 from '../../assets/images/background1.jpg'
+
+import Bottom from "../Bottom";
+import Navigation from "../Navigation";
+
+import {Container, Button, Row, Col, Input} from 'react-materialize'
+
 const PasswordForgetPage = () =>
   <div>
-    <PasswordForgetForm />
+    <Navigation />
+    <div className="parallax-container">
+        <div className="center-align">
+            <Row>
+                <h1 className="title-parallax-connected-with-elements bold home-h1-title">Vous avez oublié votre mot de passe ?</h1>
+            </Row>
+        </div>
+        <div className="center-align">
+            <Row>
+              <h2 className="title-parallax-connected-with-elements home-h2-title">Nous avons la solution !</h2>
+            </Row>
+        </div>
+        <div className="parallax">
+            <img src={image1} />
+        </div>
+    </div>
+    <Container>
+      <Row className="m-5">
+        <h3 className="h3-title">Renseignez votre adresse e-mail</h3>
+      </Row>
+      <Row className="m-5">
+        <Col s={12} m={12} l={12}>
+          <PasswordForgetForm />
+        </Col>
+        <Col s={12} m={12} l={12}>
+          <p className="text text-left">* Vous recevrez un e-mail dans les 48 prochaines heures à la date où a été transmis cette demande.</p>
+        </Col>
+      </Row>
+      
+    </Container>
+    <Bottom/>
   </div>
 
 const updateByPropertyName = (propertyName, value) => () => ({
@@ -22,7 +58,6 @@ const INITIAL_STATE = {
 class PasswordForgetForm extends Component {
   constructor(props) {
     super(props);
-
     this.state = { ...INITIAL_STATE };
   }
 
@@ -50,12 +85,7 @@ class PasswordForgetForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit} autoComplete="on">
-        <Row>
-          <h3 className="h3-title">Récupérer mon mot de passe</h3>
-          <hr className="separator"/>
-        </Row>
         { error && <p s={12} m={12} l={12} className="error">{error.message}</p> }
-
         <Row className="center-align">
             <Input
               s={12}
@@ -84,7 +114,7 @@ class PasswordForgetForm extends Component {
   }
 }
 
-const PasswordForgetLink = () => <Link className="modal-close btn" to={routes.PASSWORD_FORGET}>Mot de passe oublié ?</Link>
+const PasswordForgetLink = () => <Link className="forgot-link modal-btn modal-close btn" to={routes.PASSWORD_FORGET}>Mot de passe oublié ?</Link>
 
 export default PasswordForgetPage;
 

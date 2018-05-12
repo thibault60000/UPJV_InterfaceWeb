@@ -11,6 +11,12 @@ import Navigation from "../Navigation";
 import { history } from '../../store';
 
 import OneArticle from './OneArticle';
+import Bottom from "../Bottom";
+
+import image4 from '../../assets/images/background4.jpg'
+
+import { Row } from 'react-materialize';
+
 
 class OneArticlePage extends Component {
   constructor(props){
@@ -28,14 +34,27 @@ class OneArticlePage extends Component {
   }
 
   render() {
-    const { articles} = this.props;
+    const { articles } = this.props;
 
     return (
       <div>
         <Navigation />
-        <h1> Voici l'article : { articles.title } </h1>
+        <div className="parallax-container">
+            <div className="center-align">
+                <Row>
+                  <h1 className="home-h1-title bold title-parallax-without-elements">{ articles.title }</h1>
+                </Row>
+            </div>
+            <div className="parallax">
+                <img src={image4} />
+            </div>
+            <Row className="valign-wrapper center-align">
+              <a className="return-btn" href={routes.LANDING}>◄ Retour</a>
+            </Row>
+        </div>
         {!!articles && <OneArticle articles={articles} authUser={this.props.authUser} history={this.state.history} />}
         {!articles && <p>Cet article n'existe plus.</p>}
+        <Bottom />
       </div>
     );
   }
