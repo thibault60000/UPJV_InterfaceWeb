@@ -110,7 +110,7 @@ class ArticleCreateForm extends Component {
                 s={12}
                 m={6}
                 l={6}
-                label="Titre de l'idée"
+                label="Titre de l'article"
                 onChange={event =>
                   this.setState(updateByPropertyName("title", event.target.value))
                 }
@@ -137,7 +137,7 @@ class ArticleCreateForm extends Component {
                 s={12}
                 m={6}
                 l={6}
-                label="Description de l'idée"
+                label="Description de l'article"
                 onChange={event =>
                   this.setState(
                     updateByPropertyName("description", event.target.value)
@@ -170,18 +170,27 @@ class ArticleCreateForm extends Component {
                   )
                 }
               />
-              <div className="col input-field s12 m12 l6" id="createFieldPublic">
-              <label>
-                <input type="checkbox" name="checkboxIsPublic" value={isPublic} id="checkboxIsPublic" onChange={event =>
+              
+              <div id="checkboxIsPublic">
+              <Input
+                s={12}
+                m={12}
+                l={6}
+                name="checkboxIsPublic"
+                
+                type="checkbox"
+                value={isPublic}
+                label="Rendre l'idée publique "
+                onChange={event =>
                   this.setState(
                     updateByPropertyName("isPublic", event.target.value)
                   )
-                } />
-                 Rendre l'idée publique </label>
+                }
+              />
               </div>
+              
               </Row>
               <Row>
-              
               <Button
                 s={12}
                 m={12}
@@ -189,9 +198,9 @@ class ArticleCreateForm extends Component {
                 waves="light"
                 disabled={isInvalid}
                 type="submit">
-                Créer l'idée
+                Créer
               </Button>              
-              </Row>
+            </Row>
         </form>
       </div>
     );
