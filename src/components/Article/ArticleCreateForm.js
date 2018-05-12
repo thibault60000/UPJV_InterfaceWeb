@@ -86,7 +86,7 @@ class ArticleCreateForm extends Component {
         this.setState(() => ({
           ...INITIAL_STATE
         }));
-        history.push(routes.ARTICLE);
+        history.push(routes.HOME);
       })
       .catch(error => {
         this.setState(updateByPropertyName("error", error));
