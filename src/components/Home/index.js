@@ -6,7 +6,7 @@ import { db } from '../../firebase';
 import * as routes from '../../constants/routes';
 
 import Navigation from '../Navigation';
-import Footer from '../Footer';
+import Bottom from '../Bottom';
 import ArticleList from '../Article/ArticleList';
 
 import {Parallax, Row, Modal, Button} from 'react-materialize';
@@ -49,7 +49,7 @@ class HomePage extends Component {
         <h2 className="h2-title">Les derniers projets du moment</h2>
         { !!articles && <ArticleList />}
         { !articles && <p>Dommage, il n'y a pas d'articles</p>}
-        <Footer />
+        <Bottom />
       </div>
     );
   }

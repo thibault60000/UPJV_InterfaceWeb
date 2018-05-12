@@ -15,7 +15,7 @@ import Navigation from "../Navigation";
 import ArticleCreateForm from "./ArticleCreateForm";
 
 import {Parallax} from 'react-materialize';
-import Footer from "../Footer";
+import Bottom from "../Bottom";
 
 class ArticlePage extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class ArticlePage extends Component {
           authUser={this.props.authUser}
           history={this.state.history}
         />
-        <Footer />
+        <Bottom />
       </div>
     );
   }

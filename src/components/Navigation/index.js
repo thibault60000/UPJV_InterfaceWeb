@@ -14,7 +14,7 @@ const Navigation = ({ authUser }) =>
   </div>
 
 const NavigationAuth = () =>
-  <Navbar brand='Logo' right>
+  <Navbar brand='Idea Book' right>
     <NavItem href={routes.HOME}>
       Accueil (log)
     </NavItem>
@@ -34,7 +34,7 @@ const NavigationAuth = () =>
   </Navbar>
 
 const NavigationNonAuth = () =>
-  <Navbar brand='Logo' right>
+  <Navbar brand='Idea Book' right>
     <NavItem href={routes.LANDING} >
       Accueil
     </NavItem>

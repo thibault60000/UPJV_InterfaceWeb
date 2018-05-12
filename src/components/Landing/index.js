@@ -1,17 +1,21 @@
 import React from 'react';
 import Navigation from '../Navigation';
 import SignInForm from '../SignIn';
-import Footer from '../Footer';
+import Bottom from '../Bottom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faAngleLeft } from '@fortawesome/fontawesome-free-solid'
 import { Link } from 'react-router-dom';
 import * as routes from '../../constants/routes';
+
+import image1 from '../../assets/images/background1.jpg'
+import image2 from '../../assets/images/background2.jpg'
 
 import {Parallax, Button, Modal, Icon, Row, Col} from 'react-materialize'
 
 const LandingPage = () =>
     <section>
         <Navigation />
+
         <div className="parallax-container">
             <div className="valign-wrapper center-align">
                 <Row>
@@ -34,9 +38,11 @@ const LandingPage = () =>
                 </Row>
             </div>
             <div className="parallax">
-                <img src="http://materializecss.com/images/parallax1.jpg"/>
+                <img src={image1}/>
             </div>
         </div>
+
+        
         <section className="container" id="home-section">
             <Row className="center-align">
                 <Col s="12" m="4" l="4">
@@ -62,8 +68,8 @@ const LandingPage = () =>
                 </Col>
             </Row>
         </section>
-        <Parallax imageSrc="http://materializecss.com/images/parallax2.jpg"/>
-        <Footer />
+        <Parallax imageSrc={image2} />
+        <Bottom />
     </section>
     
 
