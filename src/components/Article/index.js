@@ -28,10 +28,12 @@ class ArticlePage extends Component {
   }
 
   componentDidMount() {
-    const { onSetArticles } = this.props;
+    const { onSetArticles } = this.props;  
     db.onceGetArticles().then(snapshot => onSetArticles(snapshot.val()));
   }
   render() {
+    const { authUser } = this.props;
+    console.log("index", authUser);
     return (
       <div>
         <Navigation />
@@ -57,7 +59,9 @@ class ArticlePage extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser
+});
 
 const mapDispatchToProps = dispatch => ({
   onSetArticles: articles => dispatch({ type: "ARTICLES_SET", articles })
