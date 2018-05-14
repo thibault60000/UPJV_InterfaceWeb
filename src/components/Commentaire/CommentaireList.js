@@ -25,34 +25,55 @@ class CommentaireList extends Component {
   }
 
   componentDidMount() {
+    /* Commentaires */
     const { onSetCommentaires, articleId } = this.props;
-    db.onceGetCommentaireId(articleId).on("value", function(snapshot) { snapshot => onSetCommentaires(snapshot.val()) });
+    db
+      .onceGetCommentaireId("hZV4CJZcdLZwfmo4z3EDK4QVm5v21525989944682")
+      .on("value", function(snapshot) {
+        onSetCommentaires(snapshot.val());
+      });
+    /* Users */
+    const { onSetUsers } = this.props;
+    db.onceGetUsers().then(snapshot => onSetUsers(snapshot.val()));
   }
 
   render() {
-    const { authUser, commentaires } = this.props;
+    const { authUser, commentaires, users } = this.props;
     console.log(commentaires);
 
     return (
-        <Row>
-          <Col s={12}>
-            <Chip>
-              <img src={avatarImg} alt="Contact Person" />
-              <strong>Jane Doe</strong>
-            </Chip>
-            <Tag>tag</Tag>
-          </Col>
-        </Row>
+      <div>
+        <h1> Les commentaires de cette idée : </h1>
+        {Object.keys(commentaires)
+          .sort()
+          .reverse()
+          .map(key => (
+            <Row>
+              <Col s={12}>
+                <Chip>
+                  <img src={avatarImg} alt="Contact Person" />
+                  {users.hasOwnProperty(commentaires[key].user) && (
+                    <strong>{users[commentaires[key].user].username} | </strong>
+                  )}{" "}
+                  <span> {commentaires[key].content}</span>
+                </Chip>
+              </Col>
+            </Row>
+          ))};
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-    commentaires: state.commentaireState.commentaires
-  });
-  
-  const mapDispatchToProps = dispatch => ({
-    onSetCommentaires: commentaires => dispatch({ type: "COMMENTAIRES_SET", commentaires }),
-  });
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(CommentaireList);
+  commentaires: state.commentaireState.commentaires,
+  users: state.userState.users
+});
+
+const mapDispatchToProps = dispatch => ({
+  onSetCommentaires: commentaires =>
+    dispatch({ type: "COMMENTAIRES_SET", commentaires }),
+  onSetUsers: users => dispatch({ type: "USERS_SET", users })
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentaireList);
