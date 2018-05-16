@@ -27,10 +27,7 @@ class ArticlePage extends Component {
     };
   }
 
-  componentDidMount() {
-    const { onSetArticles } = this.props;  
-    db.onceGetArticles().then(snapshot => onSetArticles(snapshot.val()));
-  }
+
   render() {
     const { authUser } = this.props;
     console.log("index", authUser);
@@ -63,16 +60,14 @@ const mapStateToProps = state => ({
   authUser: state.sessionState.authUser
 });
 
-const mapDispatchToProps = dispatch => ({
-  onSetArticles: articles => dispatch({ type: "ARTICLES_SET", articles })
-});
+
 
 const authCondition = authUser => !!authUser;
 
 const exportConfig = compose(
   withRouter,
   withAuthorization(authCondition),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps, null)
 );
 
 export default exportConfig(ArticlePage);

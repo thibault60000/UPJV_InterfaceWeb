@@ -50,3 +50,22 @@ export const updateArticle = (id, title, description, editDate, keywords, limite
     limite,
     isPublic
   })
+
+
+/* COMMENTAIRES API */
+
+export const doCreateCommentaire = (user, id, date, content, username, articleID) => 
+  db.ref(`commentaires/${id}`).set({
+    user,
+    id,
+    date,
+    content,
+    username,
+    articleID
+  });
+
+export const onceGetCommentaires = () => 
+  db.ref('commentaires').once('value');
+
+export const onceGetCommentaireId = (id) =>
+  db.ref('commentaires').orderByChild('articleID').equalTo(`${id}`); 

@@ -1,20 +1,25 @@
 import React, { Component } from "react";
-
-import { db, st } from "../../firebase";
-import firebase from 'firebase';
-
 import * as routes from "../../constants/routes";
 import { connect } from "react-redux";
 import { history } from '../../store';
 
+// Firebase
+import { db, st } from "../../firebase";
+import firebase from 'firebase';
+
+// Moment.JS
 import * as moment from 'moment';
 import 'moment/locale/fr';
 
+// Pages
 import OneArticleEditForm from './OneArticleEditForm';
+import CommentairePage from '../Commentaire/index';
 
+// materialize
 import { Card, CardTitle, Button, Col, Row } from "react-materialize";
 
-/* Liste d'articles */
+
+
 class OneArticle extends Component{
     constructor(props) {
         super(props);
@@ -26,8 +31,7 @@ class OneArticle extends Component{
     }
 
     componentDidMount() {
-      const { onSetUsers, } = this.props;
-      /* Users */
+      const { onSetUsers } = this.props;
       db.onceGetUsers().then(snapshot => onSetUsers(snapshot.val()));
     }
 
@@ -56,6 +60,8 @@ class OneArticle extends Component{
                 { authUser.uid === articles.user && <p><Button className="btn waves-effect waves-light" waves="light" onClick={ () => { this.handleClick(articles.id) } }> Supprimer l'idée</Button></p> }
             
               </Card>
+
+              { articles.id && (<CommentairePage articleId={articles.id} />) }
               { authUser.uid === articles.user && <OneArticleEditForm articles={articles} history={history} authUser={ users[articles.user].username } /> }
           </Col>
       )
