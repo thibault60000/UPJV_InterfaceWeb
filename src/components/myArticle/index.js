@@ -11,6 +11,7 @@ import { Container, Row, Col } from "react-materialize";
 // Image
 import ampouleBlack from "../../assets/images/ampouleImgBlack.jpg";
 import computer from "../../assets/images/computer.jpg";
+import computer2 from "../../assets/images/computer2.jpg";
 // Routes
 import * as routes from "../../constants/routes";
 
@@ -57,7 +58,7 @@ class MyArticle extends Component {
             </Row>
           </div>
           <div className="parallax">
-            <img src={computer} />
+            <img src={computer2} />
           </div>
           <Row className="valign-wrapper center-align">
             <a className="return-btn" href={routes.LANDING}>
